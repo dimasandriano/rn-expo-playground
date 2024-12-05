@@ -8,13 +8,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageBG from '@/assets/images/main-page-bg.png';
 import Logo from '@/assets/images/WinnerLogo.png';
 import { Image } from '@/components/ui/image';
-import { MoonIcon } from '@/components/ui/icon';
+import { router } from 'expo-router';
 
 export default function Screen() {
   return (
-    <SafeAreaView className="flex-1">
-      <ImageBackground source={ImageBG} className="flex-1">
-        <VStack className="p-3 justify-between py-10 flex-1">
+    <ImageBackground source={ImageBG} className="flex-1">
+      <SafeAreaView className="flex-1">
+        <VStack className="flex-1 justify-between p-3 py-10">
           <VStack space="sm" className="h-1/2 justify-center">
             <Image
               source={Logo}
@@ -29,14 +29,15 @@ export default function Screen() {
           <VStack space="sm">
             <Button
               size="lg"
-              className="bg-orange-500 data-[hover=true]:bg-orange-600 data-[active=true]:bg-orange-700 rounded-2xl"
+              action="orange"
+              onPress={() => router.push('/login')}
             >
               <ButtonText>Mulai</ButtonText>
             </Button>
             <Text className="text-center">Daftar dan masuk sekarang!</Text>
           </VStack>
         </VStack>
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }

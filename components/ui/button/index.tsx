@@ -37,7 +37,7 @@ cssInterop(PrimitiveIcon, {
 });
 
 const buttonStyle = tva({
-  base: 'group/button rounded bg-primary-500 flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2',
+  base: 'group/button rounded-xl bg-primary-500 flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2',
   variants: {
     action: {
       primary:
@@ -48,13 +48,15 @@ const buttonStyle = tva({
         'bg-success-500 border-success-300 data-[hover=true]:bg-success-600 data-[hover=true]:border-success-400 data-[active=true]:bg-success-700 data-[active=true]:border-success-500 data-[focus-visible=true]:web:ring-indicator-info',
       negative:
         'bg-error-500 border-error-300 data-[hover=true]:bg-error-600 data-[hover=true]:border-error-400 data-[active=true]:bg-error-700 data-[active=true]:border-error-500 data-[focus-visible=true]:web:ring-indicator-info',
+      orange:
+        'bg-orange-500 data-[hover=true]:bg-orange-600 data-[active=true]:bg-orange-600',
       default:
         'bg-transparent data-[hover=true]:bg-background-50 data-[active=true]:bg-transparent',
     },
     variant: {
       link: 'px-0',
       outline:
-        'bg-transparent border data-[hover=true]:bg-background-50 data-[active=true]:bg-transparent',
+        'bg-transparent border border-orange-500 data-[active=true]:bg-transparent data-[active=true]:border-orange-500',
       solid: '',
     },
 
@@ -111,6 +113,12 @@ const buttonStyle = tva({
     },
     {
       action: 'negative',
+      variant: 'outline',
+      class:
+        'bg-transparent data-[hover=true]:bg-background-50 data-[active=true]:bg-transparent',
+    },
+    {
+      action: 'orange',
       variant: 'outline',
       class:
         'bg-transparent data-[hover=true]:bg-background-50 data-[active=true]:bg-transparent',

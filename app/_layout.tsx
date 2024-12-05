@@ -38,8 +38,16 @@ export default function RootLayout() {
   return (
     <GluestackUIProvider mode="light">
       <StatusBar style="auto" />
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          animation: 'ios_from_right',
+          animationDuration: 2000,
+          navigationBarHidden: true,
+        }}
+      >
         <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
         <Stack.Screen name="+not-found" />
       </Stack>
     </GluestackUIProvider>
