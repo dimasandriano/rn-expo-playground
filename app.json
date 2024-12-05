@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-playground",
-    "slug": "expo-playground",
+    "name": "demo winnergym",
+    "slug": "demo-winnergym",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

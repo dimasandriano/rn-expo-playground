@@ -15,15 +15,44 @@ import { Button, ButtonText } from '@/components/ui/button';
 import React from 'react';
 import { EyeIcon, EyeOffIcon } from 'lucide-react-native';
 import { Heading } from '@/components/ui/heading';
+import { useMutation } from '@tanstack/react-query';
+import { authService } from '@/services/auth.service';
 
 export default function Screen() {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data: any) => {
-    console.log('submiting with ', data);
+    getValues,
+    reset,
+  } = useForm<{
+    phone_number: string;
+    password: string;
+  }>({
+    defaultValues: {
+      phone_number: '',
+      password: '',
+    },
+  });
+
+  const { mutate: mutateLogin, isPending } = useMutation({
+    mutationKey: ['login'],
+    mutationFn: (data: { phone_number: string; password: string }) =>
+      authService.authLogin(data),
+    onSuccess: (data) => {
+      console.log('sukses', data);
+      reset();
+    },
+    onError: (error) => {
+      console.log('error', error.message);
+    },
+  });
+  const onSubmit = () => {
+    console.log({ payload: getValues() });
+    mutateLogin({
+      ...getValues(),
+      phone_number: `62${getValues().phone_number}`,
+    });
   };
   const [showPassword, setShowPassword] = React.useState(false);
   const handleState = () => {
@@ -118,6 +147,7 @@ export default function Screen() {
           size="lg"
           variant="solid"
           action="orange"
+          disabled={isPending}
           onPress={handleSubmit(onSubmit)}
         >
           <ButtonText>Masuk</ButtonText>
