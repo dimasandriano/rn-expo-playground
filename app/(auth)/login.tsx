@@ -17,8 +17,13 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react-native';
 import { Heading } from '@/components/ui/heading';
 import { useMutation } from '@tanstack/react-query';
 import { authService } from '@/services/auth.service';
+import { router } from 'expo-router';
+import { setStorage } from '@/utils/storage';
+import useAuth from '@/hooks/useAuth';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function Screen() {
+  const { setLogin } = useAuth();
   const {
     control,
     handleSubmit,
@@ -39,9 +44,11 @@ export default function Screen() {
     mutationKey: ['login'],
     mutationFn: (data: { phone_number: string; password: string }) =>
       authService.authLogin(data),
-    onSuccess: (data) => {
-      console.log('sukses', data);
+    onSuccess: ({ data }) => {
+      setStorage('token', data.token);
+      setLogin(!!data.token);
       reset();
+      router.replace('/(dashboard)');
     },
     onError: (error) => {
       console.log('error', error.message);

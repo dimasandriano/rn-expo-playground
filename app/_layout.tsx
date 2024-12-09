@@ -1,8 +1,3 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
 import '@/global.css';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 import { useFonts } from 'expo-font';
@@ -11,8 +6,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
-import '../global.css';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -51,6 +44,7 @@ export default function RootLayout() {
         >
           <Stack.Screen name="index" />
           <Stack.Screen name="(auth)" />
+          <Stack.Screen name="(dashboard)" />
           <Stack.Screen name="+not-found" />
         </Stack>
       </GluestackUIProvider>
