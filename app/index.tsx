@@ -34,6 +34,13 @@ export default function Screen() {
             >
               <ButtonText>Mulai</ButtonText>
             </Button>
+            <Button
+              size="lg"
+              action="orange"
+              onPress={() => router.push('/(dashboard)')}
+            >
+              <ButtonText>Dashboard</ButtonText>
+            </Button>
             <Text className="text-center">Daftar dan masuk sekarang!</Text>
           </VStack>
         </VStack>

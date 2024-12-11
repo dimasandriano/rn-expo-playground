@@ -1,5 +1,6 @@
-import { getStorage } from '@/utils/storage';
-import axios, { AxiosError } from 'axios';
+import { getStorage, setStorage } from '@/utils/storage';
+import axios from 'axios';
+import { router } from 'expo-router';
 
 export const instance = axios.create({
   baseURL: 'https://dev-api.winnergymblitar.com/api/v1',
@@ -17,7 +18,7 @@ instance.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    console.log('config', config);
+    console.log('token', token);
     return config;
   },
   function (error) {
@@ -33,9 +34,12 @@ instance.interceptors.response.use(
     // Do something with response data
     return response.data;
   },
-  function (error: AxiosError) {
+  async function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
-    console.log('instance', error.code);
+    // if (error.response.data.code === 401) {
+    //   await setStorage('token', '');
+    //   router.replace('/(auth)/login');
+    // }
     // Do something with response error
     return Promise.reject(error);
   }

@@ -11,7 +11,7 @@ import {
   FormControlLabelText,
 } from '@/components/ui/form-control';
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
-import { Button, ButtonText } from '@/components/ui/button';
+import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button';
 import React from 'react';
 import { EyeIcon, EyeOffIcon } from 'lucide-react-native';
 import { Heading } from '@/components/ui/heading';
@@ -44,8 +44,8 @@ export default function Screen() {
     mutationKey: ['login'],
     mutationFn: (data: { phone_number: string; password: string }) =>
       authService.authLogin(data),
-    onSuccess: ({ data }) => {
-      setStorage('token', data.token);
+    onSuccess: async ({ data }) => {
+      await setStorage('token', data.token);
       setLogin(!!data.token);
       reset();
       router.replace('/(dashboard)');
@@ -157,7 +157,11 @@ export default function Screen() {
           disabled={isPending}
           onPress={handleSubmit(onSubmit)}
         >
-          <ButtonText>Masuk</ButtonText>
+          {isPending ? (
+            <ButtonSpinner color="white" />
+          ) : (
+            <ButtonText>Masuk</ButtonText>
+          )}
         </Button>
         <Text className="text-center">Atau Masuk dengan Kode OTP</Text>
         <Button size="lg" variant="outline">

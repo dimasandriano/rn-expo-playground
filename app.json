@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "demo winnergym",
+    "name": "Winner Gym",
     "slug": "demo-winnergym",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,14 +10,14 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.demowinnergym.blitar"
+      "bundleIdentifier": "com.winnergym.blitar"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/WinnerLogo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.demowinnergym.blitar"
+      "package": "com.winnergym.blitar"
     },
     "web": {
       "bundler": "metro",
@@ -29,7 +29,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/main-page-bg.png",
+          "image": "./assets/images/WinnerLogo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
