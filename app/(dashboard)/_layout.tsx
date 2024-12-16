@@ -2,7 +2,7 @@ import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Stack, Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 
 export default function Layout() {
@@ -23,6 +23,7 @@ export default function Layout() {
         sceneStyle: {
           paddingHorizontal: 16,
           paddingTop: 16,
+          zIndex: 2,
         },
       }}
     >

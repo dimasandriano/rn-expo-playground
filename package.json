@@ -9,9 +9,9 @@
     "web": "DARK_MODE=media expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "publish:dev": "eas build --profile development",
-    "publish:prev": "eas build --profile preview",
-    "publish:prod": "eas build --profile production"
+    "publish:dev": "npx eas build --profile development",
+    "publish:prev": "npx eas build --profile preview",
+    "publish:prod": "npx eas build --profile production"
   },
   "jest": {
     "preset": "jest-expo"
@@ -30,6 +30,7 @@
     "@gluestack-ui/nativewind-utils": "^1.0.26",
     "@gluestack-ui/overlay": "^0.1.16",
     "@gluestack-ui/toast": "^1.0.8",
+    "@legendapp/motion": "^2.4.0",
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
@@ -37,10 +38,10 @@
     "axios": "^1.7.9",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~52.0.11",
-    "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",
     "expo-font": "~13.0.1",
     "expo-haptics": "~14.0.0",
+    "expo-linear-gradient": "~14.0.1",
     "expo-linking": "~7.0.3",
     "expo-router": "~4.0.9",
     "expo-splash-screen": "~0.29.13",

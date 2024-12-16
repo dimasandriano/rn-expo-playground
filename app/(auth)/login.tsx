@@ -21,9 +21,13 @@ import { router } from 'expo-router';
 import { setStorage } from '@/utils/storage';
 import useAuth from '@/hooks/useAuth';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AxiosError } from 'axios';
+import { TAPIResponse } from '@/types/api.type';
+import useToastify from '@/components/ui/toast/toast';
 
 export default function Screen() {
   const { setLogin } = useAuth();
+  const toast = useToastify();
   const {
     control,
     handleSubmit,
@@ -48,10 +52,21 @@ export default function Screen() {
       await setStorage('token', data.token);
       setLogin(!!data.token);
       reset();
+      toast.showToast({
+        title: 'Berhasil Login',
+        desc: 'Anda akan dipindah kehalaman beranda.',
+        action: 'success',
+        variant: 'outline',
+      });
       router.replace('/(dashboard)');
     },
-    onError: (error) => {
-      console.log('error', error.message);
+    onError: (error: AxiosError<TAPIResponse>) => {
+      toast.showToast({
+        title: 'Gagal Login',
+        desc: error.response?.data?.message || '',
+        action: 'error',
+        variant: 'outline',
+      });
     },
   });
   const onSubmit = () => {

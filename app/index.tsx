@@ -11,6 +11,7 @@ import { Image } from '@/components/ui/image';
 import { router } from 'expo-router';
 
 export default function Screen() {
+  console.log(process.env.EXPO_PUBLIC_API_URL);
   return (
     <ImageBackground source={ImageBG} className="flex-1">
       <SafeAreaView className="flex-1">
